@@ -1,6 +1,7 @@
 package com.jbk.service;
 
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,7 +26,7 @@ public class AttendanceServiceImple implements AttendanceService {
 	
 	
 	@Override
-	public String takeAttendace(AttendanceRecordDTO attendanceRecordDTO) {
+	public Attendance takeAttendace(AttendanceRecordDTO attendanceRecordDTO) {
 		String id = new SimpleDateFormat("yyyyMMddHHmmss").format(new java.util.Date());
 		attendanceRecordDTO.setId(id);
 		
@@ -41,6 +42,13 @@ public class AttendanceServiceImple implements AttendanceService {
 		attendace.setstudents(studentService.getStudentbyIds(attendanceRecordDTO.getRollNo()));
 		System.out.println(attendanceRecordDTO.getSubId());
 		return attendanceDao.takeAttendance(attendace);
+	}
+
+
+	@Override
+	public List<Attendance> viewAttendance() {
+		
+		return attendanceDao.viewAttendance();
 	}
 
 }

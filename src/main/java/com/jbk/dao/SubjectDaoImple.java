@@ -56,9 +56,10 @@ public class SubjectDaoImple implements Subjectdao {
 	public Subject getSubjectById(long id) {
 		// TODO Auto-generated method stub
 		Session session=null;
+		Subject subject=null;
 		try {
 			Session openSession = factory.openSession();
-			Subject subject = openSession.get(Subject.class, id);
+			subject = openSession.get(Subject.class, id);
 			if(subject!=null) {
 				return subject;
 			}else {
@@ -71,7 +72,7 @@ public class SubjectDaoImple implements Subjectdao {
 		}finally {
 			
 		}
-		return null;
+		return subject;
 	}
 
 	@Override
